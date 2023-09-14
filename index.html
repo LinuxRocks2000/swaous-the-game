@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>Swaous: The Card Game</title>
+    </head>
+    <body>
+        <script src="protocol.js"></script>
+        <script>
+            async function main() {
+                var connection = await protocolv3.connect(protocolv3.defaultConfig, "ws://localhost:8700", "http://localhost:8700/manifest", () => {
+
+                });
+                var signUp = connection.sendHandle("SignUp");
+                connection.onOpen(() => {
+                    signUp("weird_pusheen", "your MOM");
+                });
+            }
+            main();
+        </script>
+    </body>
+</html>
